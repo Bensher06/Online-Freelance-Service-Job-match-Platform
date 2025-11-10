@@ -1,0 +1,336 @@
+/* Base Font Definition (assuming 'Inter' is available, similar to Tailwind's default setup) */
+:root {
+  --color-blue-600: #2563eb;
+  --color-red-500: #ef4444;
+  --color-gray-900: #111827;
+  --color-gray-700: #374151;
+  --color-gray-600: #4b5563;
+  --color-gray-100: #f3f4f6;
+  --color-blue-50: #eff6ff;
+}
+
+.navContainer {
+  /* bg-white shadow-lg sticky top-0 z-40 font-inter */
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  font-family: 'Inter', sans-serif;
+}
+
+.navContent {
+  /* max-w-7xl mx-auto px-4 (base) */
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.navFlex {
+  /* flex justify-between items-center h-16 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem; /* h-16 */
+}
+
+/* --- Logo --- */
+.logoContainer {
+  flex-shrink: 0;
+}
+
+.logoText {
+  /* text-2xl font-extrabold text-blue-600 cursor-pointer */
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-blue-600);
+  cursor: pointer;
+}
+
+.logoDot {
+  /* text-gray-900 */
+  color: var(--color-gray-900);
+}
+
+/* --- Desktop Styles (md breakpoint and above) --- */
+
+.desktopNavWrapper {
+  /* flex items-center */
+  display: flex;
+  align-items: center;
+}
+
+.desktopNavLinks {
+  /* hidden (default/mobile) */
+  display: none;
+}
+
+.navLinksList {
+  /* ml-10 flex items-baseline space-x-4 */
+  margin-left: 2.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.navLink {
+  /* text-gray-600 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out */
+  color: var(--color-gray-600);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 150ms ease-in-out;
+}
+
+.navLink:hover {
+  /* hover:bg-gray-50 hover:text-blue-600 */
+  background-color: var(--color-gray-100);
+  color: var(--color-blue-600);
+}
+
+.desktopUserWrapper {
+  /* hidden (default/mobile) */
+  display: none;
+}
+
+.userInfo {
+  /* flex items-center space-x-2 p-2 rounded-full transition duration-150 ease-in-out cursor-pointer */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+}
+
+.userInfo:hover {
+  /* hover:bg-gray-50 */
+  background-color: var(--color-gray-100);
+}
+
+.avatar {
+  /* h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-semibold ring-2 ring-blue-600 opacity-90 */
+  height: 2rem;
+  width: 2rem;
+  border-radius: 9999px;
+  background-color: var(--color-blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 0 0 2px var(--color-blue-600);
+  opacity: 0.9;
+}
+
+.userName {
+  /* text-sm font-medium text-gray-700 hidden (default) */
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  display: none;
+}
+
+.dashboardLink {
+  /* flex items-center text-sm font-medium text-gray-600 p-2 rounded-md transition duration-150 ease-in-out */
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray-600);
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 150ms ease-in-out;
+}
+
+.dashboardLink:hover {
+  /* hover:text-blue-600 */
+  color: var(--color-blue-600);
+}
+
+.logoutButton {
+  /* flex items-center text-sm font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out border border-red-500 text-red-500 bg-white shadow-sm */
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 150ms ease-in-out;
+  border: 1px solid var(--color-red-500);
+  color: var(--color-red-500);
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.logoutButton:hover {
+  /* hover:bg-red-50 */
+  background-color: #fef2f2; /* Custom subtle hover color */
+}
+
+/* --- Mobile Menu --- */
+.mobileMenuButtonWrapper {
+  /* -mr-2 flex */
+  margin-right: -0.5rem;
+  display: flex;
+}
+
+.mobileMenuButton {
+  /* bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-600 transition duration-150 ease-in-out */
+  background-color: var(--color-gray-100);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: var(--color-gray-600);
+  transition: all 150ms ease-in-out;
+}
+
+.mobileMenuButton:hover {
+  /* hover:text-blue-600 */
+  color: var(--color-blue-600);
+}
+
+.mobileMenuDropdownBase {
+  /* border-t border-gray-100 */
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.mobileLinksList {
+  /* pt-2 pb-3 px-2 flex flex-col space-y-1 */
+  padding-top: 0.5rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileNavLink {
+  /* text-gray-700 block px-3 py-2 rounded-md text-base font-medium transition duration-150 ease-in-out */
+  color: var(--color-gray-700);
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 150ms ease-in-out;
+}
+
+.mobileNavLink:hover {
+  /* hover:bg-blue-50 hover:text-blue-600 */
+  background-color: var(--color-blue-50);
+  color: var(--color-blue-600);
+}
+
+.mobileDivider {
+  /* border-t border-gray-100 my-2 */
+  border-top: 1px solid var(--color-gray-100);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobileUserInfo {
+  /* flex items-center px-3 py-2 text-gray-800 */
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  color: var(--color-gray-700);
+}
+
+.mobileAvatar {
+  /* h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-semibold mr-3 */
+  height: 2rem;
+  width: 2rem;
+  border-radius: 9999px;
+  background-color: var(--color-blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+
+.mobileUserName {
+  /* font-semibold */
+  font-weight: 600;
+}
+
+.mobileLogoutButton {
+  /* mt-2 w-full text-left flex items-center justify-center bg-red-500 text-white text-base font-medium py-2 px-3 rounded-md transition duration-150 ease-in-out shadow-md */
+  margin-top: 0.5rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-red-500);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  transition: all 150ms ease-in-out;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.mobileLogoutButton:hover {
+  /* hover:bg-red-600 */
+  background-color: #dc2626;
+}
+
+
+/* --- Responsive Breakpoints (Media Queries) --- */
+
+/* Small screens (sm: min-width: 640px) - Adjust inner padding */
+@media (min-width: 640px) {
+  .navContent {
+    /* sm:px-6 */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .mobileLinksList {
+    /* sm:px-3 */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Medium screens (md: min-width: 768px) - Desktop/Mobile toggle */
+@media (min-width: 768px) {
+  .navContent {
+    /* lg:px-8 */
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .desktopNavLinks {
+    /* md:block */
+    display: block;
+  }
+  .desktopUserWrapper {
+    /* md:flex */
+    display: flex;
+  }
+  .mobileMenuButtonWrapper,
+  .mobileMenuDropdownBase {
+    /* md:hidden */
+    display: none !important;
+  }
+}
+
+/* Extra Large screens (xl: min-width: 1280px) - Show full username */
+@media (min-width: 1280px) {
+  .userName {
+    /* xl:inline */
+    display: inline;
+  }
+}

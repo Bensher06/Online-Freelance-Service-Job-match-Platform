@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Renamed from .all to .navbarHeader for clarity (optional, but good practice) */
+.all {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center items vertically */
+  height: 70px;
+  width: 100%; /* Use 100% instead of 100wh */
+  padding: 0 50px; /* Adjusted padding for better vertical alignment */
+  background-color: white; /* Added background for visibility if page has color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle bottom shadow */
+}
+
+.logo {
+  background-image: url("/2.png");
+  height: 50px; /* Reduced height to fit better in the 70px bar */
+  width: 150px; /* Made the width rectangular, common for logos */
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  /* Removed height/width from original logo styles that were too large */
+}
+
+.login {
+  display: flex;
+  gap: 20px; /* Use gap instead of setting a fixed width and space-between */
+  align-items: center;
+}
+
+/* Target the <Link> component used for "Log in" */
+.login a:first-child {
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none; /* Ensure it starts without underline */
+  padding: 5px 10px; /* Add slight padding for hover area */
+}
+
+/* Target the Log In link specifically */
+.login a:first-child:hover {
+  color: #002D72; /* Change text color on hover */
+  text-decoration: underline;
+}
+
+.login button {
+  background-color: #002D72;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-weight: 600; /* Made text bolder */
+  font-size: 16px;
+  padding: 0 15px; /* Adjust padding if needed */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.login button:hover {
+  background-color: #0350c3;
+  /* Enhanced shadow effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none; /* Removed underline here since it's a button */
+}
