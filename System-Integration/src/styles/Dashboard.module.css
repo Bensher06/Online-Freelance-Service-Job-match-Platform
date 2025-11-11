@@ -1,0 +1,34 @@
+.hello{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to bottom, #0056B3, #012f60);
+}
+
+.hello img{
+    height: 400px;
+    
+}
+
+.hello h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.qoute{
+    width: 500px;
+    height: auto;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.hello button{
+    background-color: rgb(215, 242, 250);
+    border: none;
+    height: 50px;
+    width: 200px;
+    border-radius: 50px;
+    justify-content: center;
+    box-shadow: 2px 2px 5px rgb(59, 59, 59);
+}

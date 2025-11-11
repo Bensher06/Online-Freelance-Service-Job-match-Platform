@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.all{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    width: 100wh;
+    padding: 20px 50px ;
+}
+
+.logo{
+    background-image: url("/2.png");
+    height: 100px;
+    width: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.login{
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.login p {
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login p:hover {
+  text-decoration: underline;
+}
+.login button{
+    background-color: #002D72;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+.login button:hover{
+    background-color: #0350c3;
+    box-shadow: inset 1px  black;
+    text-decoration: underline;
+}
+
+

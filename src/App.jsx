@@ -6,9 +6,9 @@ import Login from "./pages/Login"
 import Signin from "./pages/Signin"
 import UsersHome from "./pages/usersPage/userHome"
 import SignInPage from "./pages/usersPage/SignInpage"
-import AppHome from "./pages/usersPage/AppHome"
-
-
+import EmployerHome from "./employerpage/EmployerHome.jsx"
+import EmployerSignInPage from "./employerpage/EmployerSignInPage.jsx"
+import EmployerSignUp from "./employerpage/EmployerSignUp.jsx"
 function App () {
 
   return(
@@ -20,7 +20,9 @@ function App () {
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/usersHome" element={<UsersHome/>}/>
         <Route path="/SignInPage" element={<SignInPage/>}/>
-        <Route path="/AppHome" element={<AppHome/>}/>
+        <Route path="/EmployerHome" element={<EmployerHome/>}/>
+        <Route path="/EmployerSignInPage" element={<EmployerSignInPage/>}/>
+        <Route path="/EmployerSignInPage/EmployerSignUp" element={<EmployerSignUp/>}/>
       </Routes>
     </Router>
   )

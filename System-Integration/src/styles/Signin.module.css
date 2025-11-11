@@ -1,0 +1,151 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0056B3, #012f60);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 100px;
+  height: 100%;
+}
+
+.left {
+  max-width: 450px;
+  color: white;
+}
+
+.left h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.left p {
+  color: #d1e1ff;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-weight: 500;
+  color: #e4e9f7;
+  margin-bottom: 6px;
+}
+
+.field input {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.field input:focus {
+  box-shadow: 0 0 0 2px #d6e4ff;
+}
+
+.button {
+  background-color: #ffffff;
+  color: #0056B3;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #e6eefc;
+}
+
+.loginText {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #e4e9f7;
+}
+
+.loginText a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.googleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.googleBtn:hover {
+  background-color: #f2f2f2;
+}
+
+.googleIcon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #d1e1ff;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #d1e1ff;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 10px;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 10px;
+}
