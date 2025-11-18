@@ -1,0 +1,180 @@
+/* CSS Variables */
+:root {
+    --primary-blue: #007bff;
+    --dark-text: #333;
+    --medium-text: #555;
+    --light-text: #777;
+    --white: #fff;
+    --light-gray: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+.logo { font-size: 28px; font-weight: 700; color: var(--primary-blue); text-decoration: none; }
+.plusSign { color: #000; }
+.navLinks { display: flex; gap: 30px; }
+.navLinks a { color: var(--medium-text); text-decoration: none; font-weight: 500; font-size: 16px; transition: color 0.3s ease; }
+.navLinks a:hover { color: var(--primary-blue); }
+.signInButton { background-color: var(--primary-blue); color: var(--white); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 500; font-size: 16px; transition: background-color 0.3s ease; }
+.signInButton:hover { background-color: #0056b3; }
+
+/* Main Content - Adapted for settings form */
+.mainContent {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileSettingsContainer {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.profileSettingsContainer h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.settingsFormCard {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+/* Form Styles */
+.formGroup {
+    margin-bottom: 25px;
+}
+
+.formGroup label {
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--dark-text);
+    margin-bottom: 8px;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.formGroup input:disabled {
+    background-color: #f4f4f4;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.formGroup textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.formGroup textarea#experience {
+    min-height: 250px;
+}
+
+.helperText {
+    font-size: 13px;
+    color: var(--light-text);
+    margin-top: 6px;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.submitButton {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 14px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.submitButton:hover {
+    background-color: #0056b3;
+}
+
+/* Submit message */
+.submitMessage {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+}
+.success { color: green; }
+.error { color: red; }
+
+/* Footer */
+.footer {
+    background-color: #343a40; 
+    color: #ccc;
+    padding: 20px 50px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 80px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header { flex-direction: column; padding: 15px 20px; }
+    .navLinks { margin-top: 15px; gap: 20px; }
+    .mainContent { padding: 40px 20px; }
+    .settingsFormCard { padding: 25px; }
+}
+@media (max-width: 600px) {
+    .formRow { grid-template-columns: 1fr; gap: 0; }
+}

@@ -1,0 +1,309 @@
+/* CSS Variables */
+:root {
+    --primary-blue: #007bff;
+    --dark-text: #333;
+    --medium-text: #555;
+    --light-text: #777;
+    --white: #fff;
+    --light-gray: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --tag-bg: #e9ecef;
+    --tag-text: #555;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header - Copied from homepage */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.plusSign {
+    color: #000;
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+}
+
+.navLinks a {
+    color: var(--medium-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+    color: var(--primary-blue);
+}
+    
+.active {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.signInButton {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.signInButton:hover {
+    background-color: #0056b3;
+}
+
+/* Main Content */
+.mainContent {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* New Job Detail Styles */
+.jobDetailContainer {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr; /* Main content and a sidebar */
+    gap: 30px;
+}
+
+/* Left Column: Full Details */
+.jobDetailMain {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.loadingState { /* Replaces #loading-state */
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+    color: var(--medium-text);
+    grid-column: 1 / -1; /* Span both columns */
+}
+
+.jobDetailHeader {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.jobDetailHeader h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin: 0 0 10px 0;
+}
+
+.companyName {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.jobDetailsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 15px;
+    color: var(--light-text);
+}
+    
+.detailItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.jobContent h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.jobContent p, .jobContent li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--medium-text);
+}
+
+.jobContent ul, .jobContent ol {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* Right Column: Summary Card */
+.jobDetailSidebar {
+    /* This column is sticky within its container */
+    position: sticky;
+    top: 40px; /* Space from top */
+    align-self: start; /* Aligns to the top of the grid cell */
+}
+    
+.summaryCard {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.applyButton {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 14px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+    
+.applyButton:hover {
+    background-color: #0056b3;
+}
+
+.summaryCard h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark-text);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.summaryList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+    
+.summaryList li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+    
+.listTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 3px;
+}
+    
+.listValue {
+    font-size: 15px;
+    color: var(--medium-text);
+}
+
+/* Skills Tags */
+.jobTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 15px;
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40; 
+    color: #ccc;
+    padding: 20px 50px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 80px;
+    width: 100%;
+    box-sizing: border-box;
+}
+    
+/* Responsive Design */
+@media (max-width: 992px) {
+    .jobDetailContainer {
+        grid-template-columns: 1fr; /* Stack columns on tablet/mobile */
+        gap: 25px;
+    }
+    
+    .jobDetailSidebar {
+        position: static; /* Remove sticky positioning */
+        top: auto;
+        grid-row: 1; /* Move summary card to the top on mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    .navLinks {
+        margin-top: 15px;
+        gap: 20px;
+    }
+
+    .mainContent {
+        padding: 40px 20px;
+    }
+    
+    .jobDetailMain {
+        padding: 25px;
+    }
+}

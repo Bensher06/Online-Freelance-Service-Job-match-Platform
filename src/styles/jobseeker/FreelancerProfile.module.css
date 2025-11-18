@@ -1,0 +1,286 @@
+/* CSS Variables */
+:root {
+    --primary-blue: #007bff;
+    --dark-text: #333;
+    --medium-text: #555;
+    --light-text: #777;
+    --white: #fff;
+    --light-gray: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --tag-bg: #e9ecef;
+    --tag-text: #555;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+.logo { font-size: 28px; font-weight: 700; color: var(--primary-blue); text-decoration: none; }
+.plusSign { color: #000; }
+.navLinks { display: flex; gap: 30px; }
+.navLinks a { color: var(--medium-text); text-decoration: none; font-weight: 500; font-size: 16px; transition: color 0.3s ease; }
+.navLinks a:hover { color: var(--primary-blue); }
+.navLinks .active { color: var(--primary-blue); font-weight: 600; }
+.signInButton { background-color: var(--primary-blue); color: var(--white); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 500; font-size: 16px; transition: background-color 0.3s ease; }
+.signInButton:hover { background-color: #0056b3; }
+
+/* Main Content */
+.mainContent {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.loadingState { /* Replaces #loading-state */
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+    color: var(--medium-text);
+}
+
+/* Employee Profile Layout */
+.profileContainer { /* Replaces .profile-container and #profile-container */
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 30px;
+    /* display: none is handled by React conditional rendering */
+}
+
+/* Left Column: Sidebar */
+.profileSidebar {
+    position: sticky;
+    top: 40px;
+    align-self: start;
+}
+
+.profileCard {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    text-align: center;
+}
+
+.profileAvatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+    border: 2px solid var(--border-color);
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: var(--primary-blue);
+    overflow: hidden;
+}
+
+.profileAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profileCard h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin: 0 0 5px 0;
+}
+
+.jobTitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.contactButton {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contactButton:hover {
+    background-color: #0056b3;
+}
+
+.profileDetails {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.profileDetails li {
+    font-size: 15px;
+    color: var(--medium-text);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profileDetails li i {
+    width: 16px;
+    text-align: center;
+    color: var(--light-text);
+}
+
+/* Right Column: Main Content */
+.profileMain {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.profileSectionCard {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.profileSectionCard h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.profileSectionCard p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--medium-text);
+}
+
+/* Skills Tags */
+.skillsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 15px;
+}
+
+/* Experience List */
+.experienceList .experienceItem {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.experienceList .experienceItem:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.experienceItem h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin: 0;
+}
+
+.experienceItem .companyDate {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--medium-text);
+    margin-bottom: 10px;
+}
+
+.experienceItem .date {
+    color: var(--light-text);
+    font-weight: 400;
+    margin-left: 8px;
+}
+
+.experienceItem p {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+
+/* Footer */
+.footer {
+    background-color: #343a40; 
+    color: #ccc;
+    padding: 20px 50px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 80px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .profileContainer {
+        grid-template-columns: 1fr; /* Stack columns */
+    }
+    .profileSidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+    .navLinks {
+        margin-top: 15px;
+        gap: 20px;
+    }
+    .mainContent {
+        padding: 40px 20px;
+    }
+}

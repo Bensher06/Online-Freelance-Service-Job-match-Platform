@@ -20,11 +20,8 @@ function Footer() {
           rowGap: 20,
         }}
       >
-
         <div style={{ minWidth: 200 }}>
-          <h2 style={{ marginBottom: 8, fontSize: 22 }}>
-            <img src="2.png" alt="img" style={{height: 30}}/>
-          </h2>
+          <h2 style={{ marginBottom: 8, fontSize: 22, color: '#2563eb' }}>Job+</h2>
           <p style={{ color: "#cbd5e1", fontSize: 14 }}>
             Your local job finder for real opportunities near you.
           </p>
@@ -33,10 +30,9 @@ function Footer() {
         <div style={{ minWidth: 150 }}>
           <h4 style={{ marginBottom: 10, fontSize: 16 }}>Quick Links</h4>
           <ul style={{ listStyle: "none", padding: 0, lineHeight: "1.8" }}>
-            <li><a href="/jobs" style={{ color: "#cbd5e1", textDecoration: "none" }}>Find Jobs</a></li>
-            <li><a href="/companies" style={{ color: "#cbd5e1", textDecoration: "none" }}>Companies</a></li>
+            <li><a href="/employee/home" style={{ color: "#cbd5e1", textDecoration: "none" }}>Find Jobs</a></li>
+            <li><a href="/employer/talent-search" style={{ color: "#cbd5e1", textDecoration: "none" }}>Find Talent</a></li>
             <li><a href="/about" style={{ color: "#cbd5e1", textDecoration: "none" }}>About Us</a></li>
-            <li><a href="/contact" style={{ color: "#cbd5e1", textDecoration: "none" }}>Contact</a></li>
           </ul>
         </div>
 

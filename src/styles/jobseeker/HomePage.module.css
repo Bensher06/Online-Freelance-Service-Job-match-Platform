@@ -1,0 +1,197 @@
+/* CSS Variables */
+:root {
+    --primary-blue: #007bff;
+    --dark-text: #333;
+    --medium-text: #555;
+    --light-text: #777;
+    --white: #fff;
+    --light-gray: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+}
+
+/* Global styles (should typically be in a separate global CSS file) */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.plusSign { 
+    color: #000;
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+}
+
+.navLinks a {
+    color: var(--medium-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+    color: var(--primary-blue);
+}
+
+.signInButton {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.signInButton:hover {
+    background-color: #0056b3; 
+}
+
+/* Main Content */
+.mainContent {
+    padding: 80px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.introSection {
+    margin-bottom: 60px;
+}
+
+.introSection h1 {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 15px;
+}
+
+.introSection p {
+    font-size: 18px;
+    color: var(--medium-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Features Section */
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 40px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    padding: 40px;
+}
+
+.featureCard {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.featureCard:focus-within {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+.featureCard i { /* Targetting Font Awesome icons */
+    font-size: 40px;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.featureCard h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 15px;
+}
+
+.featureCard p {
+    font-size: 15px;
+    color: var(--light-text);
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40; 
+    color: #ccc; 
+    padding: 20px 50px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 80px;
+}
+    
+/* Basic Responsive Design */
+@media (max-width: 992px) {
+    .featuresGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    .navLinks {
+        margin-top: 15px;
+        gap: 20px;
+    }
+
+    .mainContent {
+        padding: 40px 20px;
+    }
+
+    .featuresGrid {
+        padding: 20px;
+    }
+}

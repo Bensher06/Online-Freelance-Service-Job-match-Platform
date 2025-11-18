@@ -1,0 +1,228 @@
+/* CSS Variables (Can be defined globally, but kept here for encapsulation) */
+:root {
+    --primary-blue: #007bff;
+    --dark-text: #333;
+    --medium-text: #555;
+    --light-text: #777;
+    --white: #fff;
+    --light-gray: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    /* --tag-bg: #e9ecef; */
+    /* --tag-text: #555; */
+}
+
+/* Global resets - In a real React app, these should be in a global CSS file */
+.globalHtml {
+    scroll-behavior: smooth;
+}
+
+.globalBody {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header - Copied from homepage */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.plusSign { /* Renamed from '.header .logo span' for module usage */
+    color: #000;
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+}
+
+.navLinks a {
+    color: var(--medium-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+    color: var(--primary-blue);
+}
+
+/* Active link style */
+.active { /* Renamed from '.header .nav-links a.active' */
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.signInButton { /* Renamed from '.header .sign-in-button' */
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.signInButton:hover {
+    background-color: #0056b3;
+}
+
+/* Main Content */
+.mainContent {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* New About Page Styles */
+.aboutContainer {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.introCard { /* Renamed from '.about-container .intro-card' */
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    margin-bottom: 50px;
+}
+
+.aboutContainer h1 {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 15px;
+}
+
+.missionStatement { /* Renamed from '.about-container .mission-statement' */
+    font-size: 18px;
+    color: var(--medium-text);
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    line-height: 1.7;
+}
+
+.aboutText { /* Renamed from '.about-container .about-text' */
+    font-size: 16px;
+    color: var(--medium-text);
+    text-align: left;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.aboutText p {
+    margin-bottom: 20px;
+}
+
+.aboutContainer h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Re-using the features grid from the homepage */
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.featureCard {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.featureCard i { /* Targeting the Font Awesome icon inside the card */
+    font-size: 40px;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.featureCard h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 15px;
+}
+
+.featureCard p {
+    font-size: 15px;
+    color: var(--light-text);
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40; 
+    color: #ccc;
+    padding: 20px 50px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 80px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .featuresGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    .navLinks {
+        margin-top: 15px;
+        gap: 20px;
+    }
+
+    .mainContent {
+        padding: 40px 20px;
+    }
+}

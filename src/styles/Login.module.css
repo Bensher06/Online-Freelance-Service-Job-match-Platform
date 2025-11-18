@@ -1,169 +1,229 @@
+/* --- CRITICAL CSS VARIABLES (Define global colors/spacing) --- */
+:root {
+    --primary-blue: #007bff;
+    --dark-text: #333;
+    --medium-text: #555;
+    --light-text: #777;
+    --white: #fff;
+    --light-gray: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+}
+
+/* --- Base Layout & Structure (Centered Container) --- */
+
 .container {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #0056B3, #012f60);
-  display: flex;
-  flex-direction: column;
+    /* Establishes vertical flex container for full height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--light-gray);
+    position: relative; 
+    overflow: hidden;
 }
 
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 60px 100px;
-  height: 100%;
+/* --- Main Content Layout (Centers the card on the screen) --- */
+
+.mainContent {
+    /* Takes up all available space and centers its content */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    
+    /* Background for Login/Sign-in views (Solid white or light gray is common here, 
+       but keeping the subtle translucent overlay for consistency if desired.) */
+    background-color: var(--light-gray); 
+    position: relative;
+    z-index: 1;
 }
 
-.left {
-  max-width: 450px;
-  color: white;
+/* The card that holds the form (replacing the old .left and .right) */
+.centerCard { 
+    width: 100%;
+    max-width: 450px; /* Constraining width for a typical login form */
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    text-align: center;
 }
 
-.left h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+.centerCard h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: var(--dark-text);
 }
 
-.left p {
-  color: #d1e1ff;
-  margin-bottom: 30px;
-  font-size: 1rem;
+.subtitle {
+    font-size: 16px;
+    color: var(--medium-text);
+    margin-bottom: 30px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
+/* --- Social Login & Divider --- */
 
-.field {
-  display: flex;
-  flex-direction: column;
-}
-
-.field label {
-  font-weight: 500;
-  color: #e4e9f7;
-  margin-bottom: 6px;
-}
-
-.field input {
-  padding: 10px 12px;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-}
-
-.field input:focus {
-  box-shadow: 0 0 0 2px #d6e4ff;
-}
-
-.options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  color: #e4e9f7;
-}
-
-.options a {
-  color: #a9c9ff;
-  text-decoration: none;
-}
-
-.options a:hover {
-  text-decoration: underline;
-}
-
-.button {
-  background-color: #ffffff;
-  color: #0056B3;
-  font-weight: 600;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #e6eefc;
-}
-
-.signupText {
-  margin-top: 18px;
-  font-size: 14px;
-  color: #e4e9f7;
-}
-
-.signupText a {
-  color: #ffffff;
-  font-weight: 600;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.right img {
-  width: 400px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-.googleBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-}
-
-.googleBtn:hover {
-  background-color: #f2f2f2;
-}
-
-.googleIcon {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
+.googleWrapper {
+    /* Center the Google component if it's wider than the container */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #d1e1ff;
-  font-size: 14px;
-  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--light-text);
+    margin: 20px 0;
 }
 
 .divider::before,
 .divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #d1e1ff;
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.divider:not(:empty)::before {
-  margin-right: 10px;
+.divider span {
+    padding: 0 10px;
+    font-size: 14px;
 }
 
-.divider:not(:empty)::after {
-  margin-left: 10px;
+/* --- Form Styles --- */
+
+.form {
+    text-align: left;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--dark-text);
+}
+
+.field input {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.field input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.options a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+.options a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.signupText {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signupText .link {
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+.signupText .link:hover {
+    text-decoration: underline;
+}
+
+/* --- Footer (Add basic style definition) --- */
+
+.footer {
+    background-color: #343a40; 
+    color: #ccc;
+    padding: 20px 50px;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto; 
+}
+
+.backbutton{
+        width: 100px;
+        height: 50px;
+        border-radius: 20px;
+        border: solid rgb(0, 0, 0, 0.1);
+        cursor: pointer;
+}
+.backbutton:hover{
+    background-color: #c5d2f4;
+}
+/* --- Navbar (Add basic style definition based on previous output) --- */
+/* You MUST ensure your imported Navbar component uses these classes */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-light);
+    position: relative; 
+    z-index: 10;
+}
+.logo { font-size: 28px; font-weight: 700; color: var(--primary-blue); text-decoration: none; }
+.plusSign { color: var(--dark-text); }
+.navLinks { display: flex; gap: 30px; }
+.navLinks a { color: var(--medium-text); text-decoration: none; font-weight: 500; font-size: 16px; transition: color 0.3s ease; }
+.navLinks a:hover { color: var(--primary-blue); }
+.signInButton { 
+    background-color: var(--primary-blue); 
+    color: var(--white); 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    font-weight: 500; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
 }

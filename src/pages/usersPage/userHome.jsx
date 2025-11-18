@@ -2,7 +2,7 @@ import React from 'react';
 // Import icons for the features section
 import { Search, MapPin, Zap } from 'lucide-react';
 // The import path is now valid because App.module.css is also being generated.
-import Styles from '../../styles/usersHome.module.css'; 
+import Styles from '../../styles/jobseeker/usersHome.module.css'; 
 import SignInPage from './SignInpage';
 
 // Helper component for Navbar placeholder

@@ -1,0 +1,360 @@
+/* CSS Variables */
+:root {
+    --primary-blue: #007bff; /* Color from the image's "Sign In" button */
+    --dark-text: #333;
+    --medium-text: #555;
+    --light-text: #777;
+    --white: #fff;
+    --light-gray: #f8f9fa; /* Background color */
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --star-color: #f39c12;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+/* --- Header (Copied from previous design) --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.plusSign {
+    color: #000;
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+}
+
+.navLinks a {
+    color: var(--medium-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+    color: var(--primary-blue);
+}
+    
+/* Style for the active navigation link */
+.activeNav {
+    color: var(--primary-blue) !important;
+    font-weight: 700 !important;
+    position: relative;
+}
+
+.activeNav::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-blue);
+}
+
+.signInButton {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.signInButton:hover {
+    background-color: #0056b3;
+}
+
+/* --- Main Content (NEW) --- */
+.mainContent {
+    padding: 40px 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Search & Filter Bar */
+.searchContainer {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    margin-bottom: 40px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.searchBar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.searchBar i { /* Targeting the Font Awesome search icon */
+    padding: 0 15px;
+    color: var(--light-text);
+    font-size: 18px;
+}
+
+.searchBar input {
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+}
+    
+.filterButton, .searchButton {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterButton {
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    border: 1px solid var(--border-color);
+}
+
+.filterButton:hover {
+    background-color: #eee;
+}
+
+.searchButton {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.searchButton:hover {
+    background-color: #0056b3;
+}
+
+.pageTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Worker Profile Cards Grid */
+.jobListingsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Individual Worker Card */
+.workerCard {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+    cursor: pointer;
+}
+
+.workerCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.workerCard:focus-within {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+    
+.workerCardContent {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.workerHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.workerHeader img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.workerInfo h3 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--dark-text);
+}
+
+.workerInfo p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+.workerBio {
+    font-size: 14px;
+    color: var(--medium-text);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    /* Clamp text to 3 lines (handled by CSS in supporting browsers) */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.workerSkills {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skillTag {
+    background-color: var(--light-gray);
+    color: var(--medium-text);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: 500;
+}
+
+.workerFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+    margin-top: auto; /* Pushes footer to bottom of card */
+}
+
+.workerRate span {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.workerRate .time {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--light-text);
+}
+
+.workerRating {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+    
+.workerRating .fa-star {
+    color: var(--star-color);
+    margin-right: 2px;
+}
+    
+.workerRating .reviewCount {
+    font-weight: 400;
+    color: var(--light-text);
+    font-size: 13px;
+}
+
+/* --- Footer (Copied from original design) --- */
+.footer {
+    background-color: #343a40;
+    color: #ccc;
+    padding: 20px 50px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 80px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+    .jobListingsContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+    
+@media (max-width: 992px) {
+    .header {
+        padding: 15px 20px;
+    }
+    .mainContent {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .jobListingsContainer {
+        grid-template-columns: 1fr;
+    }
+    .searchContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filterButton, .searchButton {
+        width: 100%;
+    }
+    .header {
+        flex-direction: column;
+        padding-bottom: 15px;
+    }
+    .navLinks {
+        margin-top: 15px;
+    }
+    .signInButton {
+        margin-top: 15px;
+        width: 100%;
+        text-align: center;
+    }
+}

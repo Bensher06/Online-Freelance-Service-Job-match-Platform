@@ -104,14 +104,14 @@
 
 /* Employer Section (Left) */
 .employerSection {
-  background: linear-gradient(to bottom, #0056B3, #012f60); /* Matching previous blue gradient */
+  background: linear-gradient(to bottom, #f39c12, #f39c12); /* Matching previous blue gradient */
   color: white;
 }
 
 /* Worker Section (Right) */
 .workerSection {
-  background-color: #f2f7fc;
-  color: #333;
+  background: linear-gradient(to bottom, #1272da, #012f60);
+  color: #ffffff;
 }
 
 .section h1 {
@@ -130,7 +130,7 @@
 }
 
 .workerSection p {
-  color: #555;
+  color: #ffffff;
 }
 
 /* Default Button Style for Split Screen (Matching CTA appearance but slightly different implementation) */
@@ -158,12 +158,12 @@
 
 /* Worker button (Dark Blue) */
 .workerSection button {
-    background-color: #0056B3; 
-    color: white;
+    background-color: #c3dffd; 
+    color: #20364d;
 }
 
 .workerSection button:hover {
-    background-color: #013a7c;
+    background-color: #0669da;
 }
 
 .section img {

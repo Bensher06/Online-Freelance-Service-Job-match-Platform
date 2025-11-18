@@ -1,151 +1,232 @@
+/* --- CRITICAL CSS VARIABLES (Assuming these are defined or imported globally) --- */
+:root {
+    --primary-blue: #007bff;
+    --dark-text: #333;
+    --medium-text: #555;
+    --light-text: #777;
+    --white: #fff;
+    --light-gray: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+}
+
+/* 1. Base Layout & Background Setup */
+
 .container {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #0056B3, #012f60);
-  display: flex;
-  flex-direction: column;
+    /* Establishes vertical flex container for full height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    background-color: var(--light-gray);
+    
+    /* Context for absolutely positioned background layer */
+    position: relative; 
+    overflow: hidden;
 }
 
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 60px 100px;
-  height: 100%;
+/* Fading Background Layer Pseudo-element */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Puts the background behind all content */
+    
+    /* --- Dynamic Background Properties (Set by JS via inline style on parent) --- */
+    background-image: var(--current-bg); 
+    
+    /* Fixed: Image sizing and positioning */
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* CRITICAL: Enable smooth transition for opacity */
+    transition: opacity 0.5s ease-in-out; 
+    opacity: 1; /* Default state: visible */
 }
 
-.left {
-  max-width: 450px;
-  color: white;
+/* State for fade-out (Applied via JS) */
+.fading::before {
+    opacity: 0;
 }
 
-.left h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+/* 2. Header Styles */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-light);
+    position: relative; 
+    z-index: 10;
 }
 
-.left p {
-  color: #d1e1ff;
-  margin-bottom: 30px;
-  font-size: 1rem;
+.logo { 
+    font-size: 28px; 
+    font-weight: 700; 
+    color: var(--primary-blue); 
+    text-decoration: none; 
+}
+.plusSign { 
+    color: var(--dark-text); 
+}
+.navLinks { 
+    display: flex; 
+    gap: 30px; 
+}
+.navLinks a { 
+    color: var(--medium-text); 
+    text-decoration: none; 
+    font-weight: 500; 
+    font-size: 16px; 
+    transition: color 0.3s ease; 
+}
+.navLinks a:hover { 
+    color: var(--primary-blue); 
+}
+.signInButton { 
+    background-color: var(--primary-blue); 
+    color: var(--white); 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    font-weight: 500; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+/* 3. Main Content Layout */
+
+.mainContent {
+    /* Takes up all available space and centers its content */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    
+    /* Translucent overlay */
+    background-color: rgba(0, 0, 0, 0.1); 
+    position: relative;
+    z-index: 1;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
+.centerCard { 
+    width: 100%;
+    max-width: 900px;
+    /* Solid background color to block the image fade from showing through the card */
+    background-color: var(--white); 
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    text-align: center;
 }
 
-.field label {
-  font-weight: 500;
-  color: #e4e9f7;
-  margin-bottom: 6px;
+.centerCard h1 {
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
-.field input {
-  padding: 10px 12px;
-  border: none;
-  border-radius: 8px;
-  outline: none;
+.subtitle {
+    font-size: 18px;
+    color: var(--medium-text);
+    margin-bottom: 40px;
 }
 
-.field input:focus {
-  box-shadow: 0 0 0 2px #d6e4ff;
+/* 4. Role Selection Grid & Cards */
+
+.roleSelectionGrid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile default */
+    gap: 30px; 
+    margin-bottom: 30px;
 }
 
-.button {
-  background-color: #ffffff;
-  color: #0056B3;
-  font-weight: 600;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
+@media (min-width: 768px) {
+    .roleSelectionGrid {
+        grid-template-columns: 1fr 1fr; /* Desktop */
+    }
 }
 
-.button:hover {
-  background-color: #e6eefc;
+.roleCard {
+    background-color: var(--light-gray);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.loginText {
-  margin-top: 18px;
-  font-size: 14px;
-  color: #e4e9f7;
+.roleCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.roleCard i { 
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.roleCard p {
+    font-size: 15px;
+    color: var(--medium-text);
+    margin-bottom: 25px;
+    flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+/* Role Buttons */
+.roleBtn {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.employeeBtn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+.employeeBtn:hover {
+    background-color: #0056b3;
+}
+
+.employerBtn {
+    background-color: #f39c12; 
+    color: var(--white);
+}
+.employerBtn:hover {
+    background-color: #d18810;
 }
 
 .loginText a {
-  color: #ffffff;
-  font-weight: 600;
-  text-decoration: underline;
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-weight: 600;
 }
 
-.right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.right img {
-  width: 400px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-.googleBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-}
-
-.googleBtn:hover {
-  background-color: #f2f2f2;
-}
-
-.googleIcon {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #d1e1ff;
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #d1e1ff;
-}
-
-.divider:not(:empty)::before {
-  margin-right: 10px;
-}
-
-.divider:not(:empty)::after {
-  margin-left: 10px;
+/* 5. Footer */
+.footer {
+    background-color: #343a40; 
+    color: #ccc;
+    padding: 20px 50px;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto; /* Ensures the footer sticks to the bottom */
 }

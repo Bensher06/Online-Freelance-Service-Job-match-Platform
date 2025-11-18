@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import styles from "../styles/Signin.module.css";
-// Assuming Navbar and Footer components are defined elsewhere or imported.
+import Footer from "../assets/Footer";
 
 // Array of all available background image paths
 const BACKGROUND_IMAGES = [
@@ -8,24 +8,15 @@ const BACKGROUND_IMAGES = [
     "/bg5.png", "/bg6.png", "/bg7.png", "/bg8.png"
 ];
 
-// Helper Component: Generic Footer
-const Footer = () => (
-    <footer className={styles.footer}>
-        <p>&copy; 2025 Job+. All rights reserved. Connecting communities one job at a time.</p>
-    </footer>
-);
-
-// Helper Component: Generic Navbar
-const Navbar = () => (
+const NavbarPlaceholder = () => (
     <header className={styles.header}>
         <a href="/" className={styles.logo}>
             Job<span className={styles.plusSign}>+</span>
         </a>
         <nav className={styles.navLinks}>
-            <a href="/client" className={styles.navLink}>Jobs</a>
+            <a href="/employee/home" className={styles.navLink}>Jobs</a>
             <a href="/about" className={styles.navLink}>About</a>
         </nav>
-        <a href="/auth/signin" className={styles.signInButton}>Sign In</a>
     </header>
 );
 
@@ -45,17 +36,16 @@ function RoleSelection() {
     }, [currentBg]);
 
     useEffect(() => {
-        // Set the interval to cycle the image every 2000ms (2 seconds)
         const imageInterval = setInterval(() => {
-            setIsFading(true); // 1. Start fade-out
+            setIsFading(true); // Start fade-out
 
             const swapTimeout = setTimeout(() => {
                 setCurrentBg(getNextBackground());
-                setIsFading(false); // 2. Trigger fade-in
-            }, 500); // 0.5s fade duration
+                setIsFading(false); // Trigger fade-in
+            }, 500); // Wait 0.5s
 
             return () => clearTimeout(swapTimeout);
-        }, 2000); // Cycle every 2 seconds (2000ms)
+        }, 1500);
 
         return () => clearInterval(imageInterval);
     }, [getNextBackground]);
@@ -64,11 +54,12 @@ function RoleSelection() {
     // Handler to navigate to the Sign In page for a specific role
     const handleRoleSelect = (role) => {
         if (role === 'employer') {
-            window.location.href = '/auth/employer/signin';
+            window.location.href = '/employer/home';
         } else if (role === 'employee') {
-            window.location.href = '/auth/signin';
+            window.location.href = '/employee/home';
         }
     };
+
 
     return (
         <div 
@@ -77,11 +68,11 @@ function RoleSelection() {
                 '--current-bg': `url(${currentBg})` // Set CSS variable for pseudo-element
             }}
         >
-            <Navbar />
+            <NavbarPlaceholder />
             
             <main className={styles.mainContent}>
                 <div className={styles.centerCard}>
-                    
+                  
                     <h1>Join Job+</h1>
                     <p className={styles.subtitle}>Please choose your role to find the best opportunities or talent.</p>
 
@@ -96,7 +87,7 @@ function RoleSelection() {
                             <i className="fas fa-briefcase role-icon"></i>
                             <h2>Job Seeker</h2>
                             <p>Find contract work, full-time roles, and apply with your professional profile.</p>
-                            <button 
+                            <button
                                 className={`${styles.roleBtn} ${styles.employeeBtn}`}
                             >
                                 Continue as Employee
@@ -122,7 +113,7 @@ function RoleSelection() {
                     </div>
 
                     <p className={styles.loginText}>
-                        Already have an account? <a href="/login" onClick={(e) => {e.preventDefault(); handleRoleSelect('employee');}}>Log in</a>
+                        Already have an account? <a href="/login">Log in</a>
                     </p>
 
                 </div>

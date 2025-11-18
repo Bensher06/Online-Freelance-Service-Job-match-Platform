@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Search, MapPin, Zap, LogIn, UserPlus, Mail, Lock, Chrome, Github, X } from 'lucide-react'; 
-import { useNavigate } from 'react-router-dom';
-// --- Inline Style Definitions ---
+// Import corrected Navbar and Footer
+import Navbar from '../../assets/Navbar'; 
+import Footer from '../../assets/Footer'; 
+
+
+// --- Inline Style Definitions (Centralized) ---
 const styles = {
     // === 1. GLOBAL & CONTAINER ===
     container: {
@@ -11,7 +15,7 @@ const styles = {
         backgroundColor: '#f9fafb',
         fontFamily: 'Inter, sans-serif',
     },
-    // === 2. MODAL STYLES (New) ===
+    // === 2. MODAL STYLES ===
     modalBackdrop: {
         position: 'fixed',
         top: 0,
@@ -35,6 +39,7 @@ const styles = {
         maxWidth: '400px',
         width: '90%',
         animation: 'slideUp 0.3s ease-out',
+        textAlign: 'center',
     },
     closeButton: {
         position: 'absolute',
@@ -47,67 +52,7 @@ const styles = {
         transition: 'color 0.15s ease-in-out',
         padding: '0.5rem',
     },
-    // === 3. HOMEPAGE STYLES (from EmployeeHome.jsx) ===
-    navbar: {
-        backgroundColor: '#ffffff',
-        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
-        padding: '1rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '100%',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        animation: 'fadeIn 0.5s ease-out',
-    },
-    logo: {
-        fontSize: '1.5rem',
-        fontWeight: '800',
-        color: '#1d4ed8',
-    },
-    navLink: {
-        fontWeight: '500',
-        transition: 'color 0.15s ease-in-out',
-        textDecoration: 'none',
-        padding: '0.5rem',
-        color: '#4b5563',
-    },
-    navMenu: {
-        display: 'flex', 
-        gap: '1.5rem', 
-        alignItems: 'center',
-    },
-    headerButtons: {
-        display: 'flex',
-        gap: '0.75rem',
-        alignItems: 'center',
-    },
-    signUpButton: { 
-        padding: '0.5rem 1rem',
-        backgroundColor: '#2563eb',
-        color: '#ffffff',
-        borderRadius: '0.5rem',
-        textDecoration: 'none',
-        fontWeight: '600',
-        transition: 'background-color 0.15s ease-in-out',
-        display: 'flex',
-        alignItems: 'center',
-        fontSize: '0.875rem',
-    },
-    signInButton: {
-        padding: '0.5rem 1rem',
-        border: '1px solid #2563eb',
-        color: '#2563eb',
-        backgroundColor: '#ffffff',
-        borderRadius: '0.5rem',
-        transition: 'background-color 0.15s ease-in-out',
-        textDecoration: 'none',
-        fontWeight: '500',
-        display: 'flex',
-        alignItems: 'center',
-        fontSize: '0.875rem',
-    },
+    // === 3. HOMEPAGE STYLES ===
     hero: {
         display: 'flex',
         flexDirection: 'column',
@@ -117,6 +62,11 @@ const styles = {
         maxWidth: '80rem',
         margin: '0 auto',
         width: '100%',
+    },
+    introSection: {
+        textAlign: 'center',
+        marginBottom: '3rem',
+        padding: '1rem',
     },
     title: {
         fontSize: '2.5rem',
@@ -134,6 +84,20 @@ const styles = {
         color: '#4b5563',
         marginTop: '1rem',
         animation: 'slideUp 0.7s ease-out 0.4s backwards',
+    },
+    signUpButton: { 
+        padding: '0.5rem 1rem',
+        backgroundColor: '#2563eb',
+        color: '#ffffff',
+        borderRadius: '0.5rem',
+        textDecoration: 'none',
+        fontWeight: '600',
+        transition: 'background-color 0.15s ease-in-out',
+        display: 'flex',
+        alignItems: 'center',
+        fontSize: '0.875rem',
+        border: 'none',
+        cursor: 'pointer',
     },
     featuresSection: {
         padding: '4rem 1.5rem',
@@ -175,15 +139,7 @@ const styles = {
         fontSize: '1rem',
         color: '#4b5563',
     },
-    footer: {
-        backgroundColor: '#1f2937',
-        color: '#ffffff',
-        padding: '2rem',
-        textAlign: 'center',
-        width: '100%',
-        marginTop: 'auto',
-    },
-    // === 4. SIGN-IN FORM STYLES (from JobSeekerSignInPage.jsx) ===
+    // === 4. FORM STYLES (Used by SignInModal) ===
     formTitle: {
         fontSize: '1.5rem',
         fontWeight: '800',
@@ -198,6 +154,15 @@ const styles = {
         color: '#6b7280',
         marginBottom: '1.5rem',
     },
+    messageBox: (isError) => ({
+        padding: '0.75rem',
+        backgroundColor: isError ? '#fee2e2' : '#dbeafe',
+        color: isError ? '#ef4444' : '#1e40af',
+        borderRadius: '0.375rem',
+        border: `1px solid ${isError ? '#fca5a5' : '#60a5fa'}`,
+        fontSize: '0.875rem',
+        marginBottom: '1rem',
+    }),
     socialButton: {
         width: '100%',
         padding: '0.75rem 1rem',
@@ -250,7 +215,7 @@ const styles = {
         outline: 'none',
         transition: 'border-color 0.15s ease-in-out',
     },
-    submitButton: (loading) => ({
+    formSubmitButton: (loading) => ({
         width: '100%',
         padding: '0.75rem 1rem',
         border: 'none',
@@ -272,45 +237,11 @@ const styles = {
         textDecoration: 'none',
         cursor: 'pointer',
         transition: 'color 0.15s ease-in-out',
-    }
+    },
 };
 
-// --- Helper Components ---
-
-const Navbar = ({ openModal }) => (
-
-    
-    <header style={styles.navbar}>
-        <a href="#" style={styles.logo}>Job<span style={{ color: '#2563eb' }}>+</span></a>
-        <nav style={styles.navMenu}>
-            <a href="#" style={styles.navLink}>Find Jobs</a>
-            <a href="#" style={styles.navLink}>Employers</a>
-        </nav>
-        <div style={styles.headerButtons}>
-            {/* SIGN IN Button opens the modal */}
-            <button style={styles.signInButton} onClick={openModal}>
-                <LogIn style={{ width: '1rem', height: '1rem', marginRight: '0.25rem' }} />
-                Sign In
-            </button>
-            {/* REGISTER FREE Button opens the modal */}
-            <button style={styles.signUpButton} onClick={navigateToJobseekerSignUpPage}>
-                <UserPlus style={{ width: '1rem', height: '1rem', marginRight: '0.25rem' }} />
-                Register Free
-            </button>
-        </div>
-    </header>
-);
-
-const Footer = () => (
-    <footer style={styles.footer}>
-        <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
-            <p style={{ fontSize: '0.875rem' }}>&copy; {new Date().getFullYear()} Job+. All rights reserved. Connecting job seekers with local opportunities.</p>
-        </div>
-    </footer>
-);
-
 // --- MODAL CONTENT (JobSeekerSignInPage converted to Modal Content) ---
-const SignInModalContent = ({ closeModal }) => {
+const SignInModalContent = ({ closeModal, navigateToSignUp }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -334,15 +265,6 @@ const SignInModalContent = ({ closeModal }) => {
 
     const handleForgotPassword = () => {
         setMessage('Password reset functionality is pending.');
-    };
-
-    // Note: The "Create one" link/button in a real app would either close this modal and open a sign-up modal,
-    // or navigate to a dedicated sign-up page. Here, we'll keep it simple and close the modal.
-    const handleNavigation = (e) => {
-        e.preventDefault();
-        // In a real app, this would redirect or open a different modal
-        setMessage('Redirecting to Sign Up is pending.');
-        setTimeout(closeModal, 1000);
     };
     
 
@@ -425,7 +347,7 @@ const SignInModalContent = ({ closeModal }) => {
                     </div>
                 </div>
                 
-                <button type="submit" style={styles.submitButton(loading)} disabled={loading}>
+                <button type="submit" style={styles.formSubmitButton(loading)} disabled={loading}>
                     {loading ? (
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                             <svg style={{ animation: 'spin 1s linear infinite', width: '1.25rem', height: '1.25rem', marginRight: '0.75rem', color: 'white' }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -447,7 +369,7 @@ const SignInModalContent = ({ closeModal }) => {
                 Don't have an account? 
                 <a 
                     href="#" 
-                    onClick={handleNavigation} 
+                    onClick={navigateToSignUp} 
                     style={{ ...styles.link, marginLeft: '0.25rem' }}
                 >
                     Create one
@@ -478,7 +400,7 @@ const features = [
 ];
 
 // --- MAIN WRAPPER COMPONENT ---
-const EmployeeHomeWithModal = () => {
+const JobSeekerHome = () => {
     // State to track which feature card is being hovered over
     const [hoveredCard, setHoveredCard] = useState(null);
     // State to control the modal visibility
@@ -493,6 +415,12 @@ const EmployeeHomeWithModal = () => {
         setIsModalOpen(false);
     };
 
+    // Navigates to the dedicated sign-up page
+    const navigateToSignUp = (e) => {
+        e.preventDefault();
+        window.location.href = '/employee/signup';
+    }
+
     return (
         <div style={styles.container}>
             {/* Inject CSS Keyframes for animations */}
@@ -506,6 +434,7 @@ const EmployeeHomeWithModal = () => {
                         from { opacity: 0; transform: translateY(20px); }
                         to { opacity: 1; transform: translateY(0); }
                     }
+                    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
                 `}
             </style>
 
@@ -577,11 +506,11 @@ const EmployeeHomeWithModal = () => {
                     // Close modal if backdrop is clicked, but not if content is clicked
                     if (e.target === e.currentTarget) closeModal(); 
                 }}>
-                    <SignInModalContent closeModal={closeModal} />
+                    <SignInModalContent closeModal={closeModal} navigateToSignUp={navigateToSignUp} />
                 </div>
             )}
         </div>
     );
 };
 
-export default EmployeeHomeWithModal;
+export default JobSeekerHome;
